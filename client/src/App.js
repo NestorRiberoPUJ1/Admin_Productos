@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ActualizarProducto from "./components/ActulizarProducto/ActualizarProducto";
+import ActualizarProducto from "./components/ActualizarProducto/ActualizarProducto";
 import AllProducts from "./components/AllProducts/AllProducts";
 import NuevoProducto from "./components/NuevoProducto/NuevoProducto";
 import Producto from "./components/Producto/Producto";

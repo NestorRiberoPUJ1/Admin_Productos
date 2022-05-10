@@ -11,6 +11,8 @@ const ActualizarProducto = () => {
     const [precio, setPrecio] = useState("");
     const [descripcion, setDescripcion] = useState("");
 
+    const [errors, setErrors] = useState({});
+
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/productos/" + id)
@@ -34,7 +36,7 @@ const ActualizarProducto = () => {
             .then(result => {
                 history.push("/");
             })
-            .catch(err => console.log(err));
+            .catch(err => setErrors(err.response.data.errors));
     }
 
     return (
@@ -45,6 +47,7 @@ const ActualizarProducto = () => {
                 <div className="form-group">
                     <label>Nombre:</label>
                     <input id="nombre" name="nombre" type="text" className="form-control" onChange={(e) => setNombre(e.target.value)} value={nombre} />
+                    {errors.nombre ? <span className="text-danger">{errors.nombre.message}</span> : null}
                 </div>
                 <div className="form-group">
                     <label>Precio:</label>
@@ -53,6 +56,7 @@ const ActualizarProducto = () => {
                 <div className="form-group">
                     <label>Descripción:</label>
                     <textarea id="descripcion" name="descripcion" className="form-control" cols="30" rows="5" onChange={(e) => setDescripcion(e.target.value)} value={descripcion} />
+                    {errors.descripcion ? <span className="text-danger">{errors.descripcion.message}</span> : null}
                 </div>
 
                 <hr />
